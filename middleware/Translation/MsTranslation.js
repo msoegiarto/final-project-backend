@@ -288,8 +288,8 @@ const _readPlainTextFile = async (filepath, filename) => {
 const _writeFile = async (filepath, filename, textArray) => {
   console.log('[_writeFile] START');
 
-  // const dir = path.join(__dirname, `../../../test_file/${filename}`); // local for test
-  const dir = path.join(__dirname, `../${filepath}/${filename}`);
+  // const dir = path.join(__dirname, `../../test_file/${filename}`); // local for test
+  const dir = path.join(__dirname, `${filepath}/${filename}`);
 
   // to know more about flags, visit: https://nodejs.org/api/fs.html#fs_file_system_flags
   const stream = fs.createWriteStream(dir, { flags: 'w', encoding: 'utf8', emitClose: true });
@@ -344,7 +344,7 @@ class MsTranslation {
    * @async
    * @function readPlainTextFile
    * @description read from local file, plain/text
-   * @param {string} filepath - example: '../../test_file'
+   * @param {string} filepath - example: '../test_file'
    * @param {string} filename - example: 'filename.txt'
    * @returns {Promise<Object>} totalCharLength<number> and textArray<string[]>
    */
@@ -357,7 +357,7 @@ class MsTranslation {
    * @async
    * @function writeFile
    * @description write an array of text into a physical file
-   * @param {string} filepath - example: '../../test_file'
+   * @param {string} filepath - example: '../test_file'
    * @param {string} filename - example: 'filename.txt'
    * @param {Array.<string>} textArray
    */

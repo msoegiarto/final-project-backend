@@ -1,7 +1,6 @@
 const Router = require('express').Router;
 const ObjectId = require('mongoose').Types.ObjectId;
 const JSZip = require('jszip');
-const path = require('path');
 const MsTranslation = require('../middleware/Translation/MsTranslation');
 
 const router = new Router();
@@ -10,15 +9,6 @@ const msTranslation = new MsTranslation();
 // Users model
 const Users = require('../models/Users');
 const Userfiles = require('../models/Userfiles');
-
-/**
- * @GET /api/translate/documents
- * 
- */
-router.get('/', (req, res, next) => {
-  console.log('test');
-  res.json({ msg: `GET /api/translate/documents` });
-});
 
 /**
  * @POST /api/translate/documents
@@ -403,12 +393,12 @@ router.post('/translate_test', async (req, res, next) => {
   try {
 
     // read the file from local directory
-    const readfileResult = await msTranslation.readPlainTextFile('../../test_file', 'a_spanish_text.txt');
+    const readfileResult = await msTranslation.readPlainTextFile('../test_file', 'a_spanish_text.txt');
 
     const result = await msTranslation.translate(readfileResult, req.body.fromLanguage, req.body.toLanguage);
 
     // write the file to local directory
-    await msTranslation.writeFile('../../test_file', 'newfile.txt', result.textArray);
+    await msTranslation.writeFile('../test_file', 'newfile.txt', result.textArray);
 
     res.json({ totalCharLength: result.totalCharLength });
 
