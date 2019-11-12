@@ -4,11 +4,10 @@
   "description": "A web application to translate document(s)",
   "main": "server.js",
   "scripts": {
-    "start": "node --max-http-header-size=5000000 server.js",
+    "start": "node server.js",
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
-    "server": "node server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "server": "node server.js"
   },
   "engines": {
     "node": "12.10.0",
@@ -24,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/msoegiarto/final-project/issues"
   },
-  "homepage": "https://msoegiarto-mtl.herokuapp.com",
+  "homepage": "https://mtl-backend.herokuapp.com",
   "dependencies": {
     "axios": "^0.19.0",
     "cors": "^2.8.5",
